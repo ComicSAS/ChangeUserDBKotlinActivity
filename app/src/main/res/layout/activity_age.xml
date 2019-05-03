@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="user"
+                  type="com.example.changeuserdbkotlinactivity.User"
+        />
+    </data>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".AgeActivity">
+
+        <EditText
+                android:id="@+id/etAgeInput"
+                android:layout_width="@dimen/indentation_0"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_8"
+                android:layout_marginEnd="@dimen/indentation_8"
+                android:hint="@string/hint_input_age"
+                android:text="@{Integer.toString(user.age)}"
+                android:inputType="number"
+                android:maxLength="@integer/max_txt_length_2"/>
+
+        <Button
+                android:id="@+id/btnAgeSubmit"
+                android:layout_width="@dimen/indentation_0"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginEnd="@dimen/indentation_8"
+                android:layout_marginBottom="@dimen/indentation_8"
+                android:text="@string/txt_submit"/>
+
+    </RelativeLayout>
+</layout>

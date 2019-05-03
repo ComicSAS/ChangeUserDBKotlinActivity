@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="user"
+                  type="com.example.changeuserdbkotlinactivity.User"
+        />
+    </data>
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+        <android.support.constraint.Guideline
+                android:id="@+id/glStartMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/indentation_16"/>
+
+        <android.support.constraint.Guideline
+                android:id="@+id/glEndMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/indentation_16"/>
+
+        <TextView
+                android:id="@+id/tvMainName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_8"
+                android:text="@{user.name}"
+                android:textSize="@dimen/txt_size_20"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+                android:id="@+id/tvMainChangeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_8"
+                android:text="@string/txt_change_name"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainName"/>
+
+        <TextView
+                android:id="@+id/tvMainSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_16"
+                android:text="@{user.surname}"
+                android:textSize="@dimen/txt_size_20"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainChangeName"/>
+
+        <TextView
+                android:id="@+id/tvMainChangeSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_8"
+                android:text="@string/txt_change_surname"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainSurname"/>
+
+        <TextView
+                android:id="@+id/tvMainAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_16"
+                android:text="@{Integer.toString(user.age)}"
+                android:textSize="@dimen/txt_size_20"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainChangeSurname"/>
+
+        <TextView
+                android:id="@+id/tvMainChangeAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_8"
+                android:text="@string/txt_change_age"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainAge"/>
+
+        <TextView
+                android:id="@+id/tvMainOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_16"
+                android:text="@{user.other}"
+                android:textSize="@dimen/txt_size_20"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainChangeAge"/>
+
+        <TextView
+                android:id="@+id/tvMainChangeOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_8"
+                android:text="@string/txt_change_other"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainOther"/>
+
+        <Button
+                android:id="@+id/btnMainSave"
+                android:layout_width="@dimen/indentation_0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/indentation_8"
+                android:layout_marginTop="@dimen/indentation_8"
+                android:layout_marginEnd="@dimen/indentation_8"
+                android:layout_marginBottom="@dimen/indentation_16"
+                android:text="@string/txt_save"
+                android:onClick="saveUser"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/glEndMain"
+                app:layout_constraintStart_toStartOf="@+id/glStartMain"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainChangeOther"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

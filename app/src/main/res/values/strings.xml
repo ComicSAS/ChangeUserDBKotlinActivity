@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ChangeUserDBKotlinActivity</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_change_name">Change Name</string>
+    <string name="txt_surname">Surname</string>
+    <string name="txt_change_surname">Change Surname</string>
+    <string name="txt_age">Age</string>
+    <string name="txt_change_age">Change Age</string>
+    <string name="txt_other">Other</string>
+    <string name="txt_change_other">Change Other</string>
+    <string name="txt_save">Save</string>
+    <string name="txt_submit">Submit</string>
+    <string name="hint_input_name">Input Name</string>
+    <string name="hint_input_surname">Input Surname</string>
+    <string name="hint_input_age">Input Age</string>
+    <string name="hint_input_other">Input Other</string>
+</resources>
