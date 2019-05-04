@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/indentation_8"
                 android:layout_marginTop="@dimen/indentation_16"
-                android:text="@{Integer.toString(user.age)}"
+                android:text="@{String.valueOf(user.age)}"
                 android:textSize="@dimen/txt_size_20"
                 app:layout_constraintStart_toStartOf="@+id/glStartMain"
                 app:layout_constraintTop_toBottomOf="@+id/tvMainChangeSurname"/>

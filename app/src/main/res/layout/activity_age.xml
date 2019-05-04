@@ -24,7 +24,7 @@
                 android:layout_marginTop="@dimen/indentation_8"
                 android:layout_marginEnd="@dimen/indentation_8"
                 android:hint="@string/hint_input_age"
-                android:text="@{Integer.toString(user.age)}"
+                android:text="@{String.valueOf(user.age)}"
                 android:inputType="number"
                 android:maxLength="@integer/max_txt_length_2"/>
 

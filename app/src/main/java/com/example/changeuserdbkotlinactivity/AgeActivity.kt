@@ -14,15 +14,15 @@ class AgeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding: ActivityAgeBinding = DataBindingUtil.setContentView(this, R.layout.activity_age)
-        binding.setUser(user)
+        val binding: ActivityAgeBinding = DataBindingUtil.setContentView(this, R.layout.activity_age)
+        binding.user = user
         initListeners()
         bindListeners()
     }
 
     private fun initListeners() {
         onAgeSubmitAction = View.OnClickListener {
-            val age = etAgeInput.getText().toString()
+            val age = etAgeInput.text.toString()
             val intentSendAge = Intent()
             intentSendAge.putExtra("AGE", age)
             setResult(OPEN_AGE, intentSendAge)

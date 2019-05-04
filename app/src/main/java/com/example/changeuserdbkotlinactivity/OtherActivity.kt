@@ -14,15 +14,15 @@ class OtherActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding: ActivityOtherBinding = DataBindingUtil.setContentView(this, R.layout.activity_other)
-        binding.setUser(user)
+        val binding: ActivityOtherBinding = DataBindingUtil.setContentView(this, R.layout.activity_other)
+        binding.user = user
         initListeners()
         bindListeners()
     }
 
     private fun initListeners() {
         onOtherSubmitAction = View.OnClickListener {
-            val other = etOtherInput.getText().toString()
+            val other = etOtherInput.text.toString()
             val intentSendOther = Intent()
             intentSendOther.putExtra("OTHER", other)
             setResult(OPEN_OTHER, intentSendOther)

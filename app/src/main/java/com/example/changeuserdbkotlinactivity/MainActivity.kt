@@ -19,56 +19,50 @@ val user = User("Andrew", "Sukhovolskij", 21, "Developer")
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            OPEN_NAME -> {
-                if (data != null) {
-                    val name = data!!.getStringExtra("NAME")
-                    tvMainName.setText(name)
-                }
-            }
-            OPEN_SURNAME -> {
-                if (data != null) {
-                    val surname = data!!.getStringExtra("SURNAME")
-                    tvMainSurname.setText(surname)
-                }
-            }
-            OPEN_AGE -> {
-                if (data != null) {
-                    val age = data!!.getStringExtra("AGE")
-                    tvMainAge.setText(age)
-                }
-            }
-            OPEN_OTHER -> {
-                if (data != null) {
-                    val other = data!!.getStringExtra("OTHER")
-                    tvMainOther.setText(other)
-                }
-            }
-        }
-    }
-
     private lateinit var onChangeNameAction: View.OnClickListener
     private lateinit var onChangeSurnameAction: View.OnClickListener
     private lateinit var onChangeAgeAction: View.OnClickListener
     private lateinit var onChangeOtherAction: View.OnClickListener
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            OPEN_NAME -> if (data != null) {
+                val name = data.getStringExtra("NAME")
+                tvMainName.text = name
+            }
+
+            OPEN_SURNAME -> if (data != null) {
+                val surname = data.getStringExtra("SURNAME")
+                tvMainSurname.text = surname
+            }
+
+            OPEN_AGE -> if (data != null) {
+                val age = data.getStringExtra("AGE")
+                tvMainAge.text = age
+            }
+
+            OPEN_OTHER -> if (data != null) {
+                val other = data.getStringExtra("OTHER")
+                tvMainOther.text = other
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        var binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.setUser(user)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.user = user
         initListeners()
         bindListeners()
     }
 
     fun saveUser(v: View) {
         if (isAllValid(tvMainName, tvMainSurname, tvMainOther)) {
-            user.name = tvMainName.getText().toString()
-            user.surname = tvMainSurname.getText().toString()
-            user.age = tvMainAge.getText().toString().toInt()
-            user.other = tvMainOther.getText().toString()
+            user.name = tvMainName.text.toString()
+            user.surname = tvMainSurname.text.toString()
+            user.age = tvMainAge.text.toString().toInt()
+            user.other = tvMainOther.text.toString()
             makeToast(
                 """onSaveAction:
                 |${user.toStringUser()}
@@ -78,22 +72,38 @@ class MainActivity : AppCompatActivity() {
             makeToast("onSaveAction: Error: Wrong input data")
     }
 
+    private fun openName() {
+        val intentChangeName = Intent(this, NameActivity::class.java)
+        startActivityForResult(intentChangeName, OPEN_NAME)
+    }
+
+    private fun openSurname() {
+        val intentChangeSurname = Intent(this, SurnameActivity::class.java)
+        startActivityForResult(intentChangeSurname, OPEN_SURNAME)
+    }
+
+    private fun openAge() {
+        val intentChangeAge = Intent(this, AgeActivity::class.java)
+        startActivityForResult(intentChangeAge, OPEN_AGE)
+    }
+
+    private fun openOther() {
+        val intentChangeOther = Intent(this, OtherActivity::class.java)
+        startActivityForResult(intentChangeOther, OPEN_OTHER)
+    }
+
     private fun initListeners() {
         onChangeNameAction = View.OnClickListener {
-            val intentChangeName = Intent(this, NameActivity::class.java)
-            startActivityForResult(intentChangeName, OPEN_NAME)
+            openName()
         }
         onChangeSurnameAction = View.OnClickListener {
-            val intentChangeSurname = Intent(this, SurnameActivity::class.java)
-            startActivityForResult(intentChangeSurname, OPEN_SURNAME)
+            openSurname()
         }
         onChangeAgeAction = View.OnClickListener {
-            val intentChangeAge = Intent(this, AgeActivity::class.java)
-            startActivityForResult(intentChangeAge, OPEN_AGE)
+            openAge()
         }
         onChangeOtherAction = View.OnClickListener {
-            val intentChangeOther = Intent(this, OtherActivity::class.java)
-            startActivityForResult(intentChangeOther, OPEN_OTHER)
+            openOther()
         }
     }
 
@@ -105,7 +115,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun makeToast(msg: String) {
-        Toast.makeText(this, "click " + msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "click $msg", Toast.LENGTH_LONG).show()
     }
 
     private fun isValid(str: String): Boolean {
@@ -113,7 +123,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isAllValid(name: TextView, surname: TextView, other: TextView): Boolean {
-        return isValid(name.getText().toString()) && isValid(surname.getText().toString())
-                && isValid(other.getText().toString())
+        return isValid(name.text.toString()) && isValid(surname.text.toString())
+                && isValid(other.text.toString())
     }
 }

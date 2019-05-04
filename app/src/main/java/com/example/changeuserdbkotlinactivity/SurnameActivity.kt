@@ -14,15 +14,15 @@ class SurnameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding: ActivitySurnameBinding = DataBindingUtil.setContentView(this, R.layout.activity_surname)
-        binding.setUser(user)
+        val binding: ActivitySurnameBinding = DataBindingUtil.setContentView(this, R.layout.activity_surname)
+        binding.user = user
         initListeners()
         bindListeners()
     }
 
     private fun initListeners() {
         onSurnameSubmitAction = View.OnClickListener {
-            val surname = etSurnameInput.getText().toString()
+            val surname = etSurnameInput.text.toString()
             val intentSendSurname = Intent()
             intentSendSurname.putExtra("SURNAME", surname)
             setResult(OPEN_SURNAME, intentSendSurname)
